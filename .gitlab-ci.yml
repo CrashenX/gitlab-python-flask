@@ -756,8 +756,6 @@ rollout 100%:
         "$name" \
         chart/
     else
-      echo "Jesse cleaning up gitlab bugs..."
-      helm del --purge "$name"
       echo "Deploying new release..."
       helm upgrade --install \
         --wait \
