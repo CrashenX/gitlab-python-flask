@@ -2,8 +2,6 @@
 
 hello app
 
-**TODO(you):** `s/hello/appName`
-
 ## Getting Started
 
 1. Setup virtual environment
@@ -11,10 +9,11 @@ hello app
         python3 -m venv venv
         venv/bin/pip install -U pip
         venv/bin/pip install -r requirements.txt
+        venv/bin/pip install -r test-requirements.txt
 
 2. Running the tests
 
-        ./run-tests.sh
+        venv/bin/tox
 
 3. Usage
 
