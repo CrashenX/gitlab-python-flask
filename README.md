@@ -20,6 +20,12 @@ hello app
         ./hello.py -h
 
 
+### Gitlab Configuration
+
+Make sure you set the CI/CD env variable in the GitLab webui:
+
+    KUBE_INGRESS_BASE_DOMAIN: <your.base.domain.com>
+
 ### (Optional) Tab Completion
 
 Docs: https://argcomplete.readthedocs.io/en/latest/index.html
