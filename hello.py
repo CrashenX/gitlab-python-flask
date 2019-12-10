@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_request():
-    return hello("RPC", None, 1, None)
+    return hello("World", None, 1, None)
 
 
 def hello(forename, surname, excitement, motd):
