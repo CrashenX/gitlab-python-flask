@@ -1,6 +1,6 @@
-# hello
+# Python Flask GitLab Template
 
-hello app
+A simple hello flask app configured to run on GitLab.
 
 ## Getting Started
 
@@ -22,9 +22,15 @@ hello app
 
 ### Gitlab Configuration
 
-Make sure you set the CI/CD env variable in the GitLab webui:
+The `.gitlab-ci.yml` in this repo is derived from GitLab's Auto DevOps
+Template. It is tweaked to deploy apps on the same cluster that GitLab
+is running. It leverages the nginx-ingress-controller and cert-manager
+(with both a staging and production cluster-issuer) as GitLab. If
+it does not work out of the box for you, the first place to look
+would be at the following variables in `.gitlab-ci.yml`:
 
-    KUBE_INGRESS_BASE_DOMAIN: <your.base.domain.com>
+- `HELM_UPGRADE_EXTRA_ARGS`
+- `HTTPS_PORT`
 
 ### (Optional) Tab Completion
 
