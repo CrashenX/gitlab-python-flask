@@ -31,8 +31,13 @@ variables:
 before_script:
   - export BASE_DOMAIN="$(echo $CI_SERVER_HOST | cut -d '.' -f 2-)"
   - export RELEASE="$(echo $CI_SERVER_HOST | cut -d '.' -f 2)"
+  - echo "CI_COMMIT_REF_NAME is $CI_COMMIT_REF_NAME"
   - export HELM_UPGRADE_EXTRA_ARGS="$(echo -n $HELM_UPGRADE_EXTRA_ARGS | sed -e "s/RELEASE/$RELEASE/g")"
-  - echo $HELM_UPGRADE_EXTRA_ARGS
+  - |
+    if [ "$CI_COMMIT_REF_NAME" == 'master' ]; then
+        export HELM_UPGRADE_EXTRA_ARGS="$(echo -n $HELM_UPGRADE_EXTRA_ARGS | sed -e 's/staging-//')"
+    fi
+  - echo "HELM_UPGRADE_EXTRA_ARGS are $HELM_UPGRADE_EXTRA_ARGS"
   - export CI_REGISTRY="registry.$BASE_DOMAIN:$HTTPS_PORT"
   - export CI_APPLICATION_REPOSITORY="$CI_REGISTRY/$CI_PROJECT_PATH"
   - export KUBE_INGRESS_BASE_DOMAIN="$BASE_DOMAIN"
